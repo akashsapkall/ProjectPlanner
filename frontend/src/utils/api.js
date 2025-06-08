@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // const { logout } =useAuth();
 const api = axios.create({
-  baseURL:'/api/v1'|| import.meta.env.VITE_REACT_APP_API_URL, // process.env.REACT_APP_API_URL ||
+  baseURL:`${import.meta.env.VITE_REACT_APP_API_URL}/api/v1`, // process.env.REACT_APP_API_URL ||
   withCredentials: true,
   timeout: 10000,
   headers: {
