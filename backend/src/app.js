@@ -6,8 +6,11 @@ import cookieParser from "cookie-parser";
 
 import userRouter from "./routes/user.routes.js";
 import projectRouter from "./routes/project.routes.js";
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
+console.log("SDGSFDVSDGS___0001"+process.env.FRONTEND_URL);
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
