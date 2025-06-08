@@ -1,0 +1,38 @@
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+// import { globalLimiter } from "./utils/rateLimiter.js";
+// import { verifyToken } from "./middlewares/auth.middleware.js";
+
+import userRouter from "./routes/user.routes.js";
+import projectRouter from "./routes/project.routes.js";
+
+const app = express();
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    credentials: true,
+  })
+);
+app.use(
+  express.json({
+    limit: "400kb",
+  })
+);
+app.use(express.urlencoded({ extended: true, limit: "400kb" }));
+app.use(express.static("public"));
+app.use(cookieParser());
+
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1", projectRouter);
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  const statusCode = err.statusCode || 500;
+  return res.status(statusCode).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+    errors: err.errors || [],
+  });
+});
+export default app;
