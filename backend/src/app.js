@@ -10,7 +10,7 @@ import projectRouter from "./routes/project.routes.js";
 const app = express();
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
@@ -25,6 +25,11 @@ app.use(cookieParser());
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1", projectRouter);
+app.all("/", async(req,res)=>{
+  return res.send("BACKEND is Running...");
+})
+
+
 
 app.use((err, req, res, next) => {
   console.log(err);
