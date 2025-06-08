@@ -98,15 +98,12 @@ const loginUser = asyncHandler(async (req, res) => {
     fullName: user.fullName,
     username: user.username,
     email: user.email,
-    avatar: user.avatar,
-    coverImg: user.coverImg,
-    watchHistory: user.watchHistory,
   };
 
   const options = {
-    // httpOnly: true,
-    // secure: true,
-    sameSite: "strict",
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   };
 
