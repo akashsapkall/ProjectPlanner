@@ -90,7 +90,7 @@ Built with **MongoDB**, **Express.js**, **React**, and **Node.js** (MERN stack),
 
 ```bash
 # Clone repo
-git clone https://github.com/your-username/mini-project-planner.git
+git clone https://github.com/akashsapkall/mini-project-planner.git
 cd mini-project-planner
 
 # Backend setup
